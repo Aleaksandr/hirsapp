@@ -3,6 +3,7 @@ buildscript {
 		springBootVersion = '1.5.3.RELEASE'
 	}
 	repositories {
+		mavenLocal()
 		mavenCentral()
 	}
 	dependencies {
@@ -27,16 +28,19 @@ repositories {
 	mavenCentral()
 }
 
-
 dependencies {
-	// tag::jetty[]
-	compile("org.springframework.boot:spring-boot-starter-web") {
-		exclude module: "spring-boot-starter-tomcat"
-	}
-	compile("org.springframework.boot:spring-boot-starter-jetty")
-	// end::jetty[]
-	// tag::actuator[]
+	compile("org.springframework.boot:spring-boot-starter-web")
+	compile ('org.springframework.boot:spring-boot-starter-tomcat')
+	compile ('org.apache.tomcat.embed:tomcat-embed-jasper')
+
+	compile('org.springframework.boot:spring-boot-starter-thymeleaf')
+	compile('jstl:jstl:1.2')
+	compile group: 'org.springframework.boot', name: 'spring-boot-devtools', version: '1.5.3.RELEASE'
+
+
+//	compile('org.springframework.boot:spring-boot-starter-data-jpa')
 	compile("org.springframework.boot:spring-boot-starter-actuator")
-	// end::actuator[]
+//	compile('org.apache.commons:commons-lang3:3.5')
 	testCompile("junit:junit")
+//	compile group: 'org.eclipse.jdt.core.compiler', name: 'ecj', version: '4.6.1'
 }

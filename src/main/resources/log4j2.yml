@@ -1,0 +1,48 @@
+Configuration:
+  name: Default
+
+  Properties:
+    Property:
+      name: log-path
+      value: "logs"
+
+  Appenders:
+
+    Console:
+      name: CA
+      targer: SYSTEM_OUT
+      PatternLayout:
+        pattern: "[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1} - %msg%n"
+#        pattern: "%d{ISO8601} [%-5.5p] %c(%F:%L) - %m%n"
+
+    File:
+      name: FA
+      fileName: ${sys:catalina.home}/logs/landinger.log
+      PatternLayout:
+        pattern: "[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1} - %msg%n"
+
+  Loggers:
+
+    Root:
+      level: info
+      AppenderRef:
+        - ref: CA
+
+    Logger:
+      name: com.itt.landinger
+      level: info
+      AppenderRef:
+        - ref: FA
+
+    Logger:
+          name: com.itt.landinger
+          level: info
+          AppenderRef:
+            - ref: CA
+
+    Logger:
+          name: com.zaxxer.hikari
+          level: debug
+          additivity: false
+          AppenderRef:
+            - ref: FA

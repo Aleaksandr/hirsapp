@@ -1,0 +1,73 @@
+#Hibernate Hikari Connection Pool
+#datasource:
+#  dictionary:
+#    url: jdbc:mysql://localhost:3306/ndictionary?useSSL=false&autoReconnect=true&useUnicode=true&characterEncoding=UTF-8
+#    username: root
+#    password: 1234
+#    driverClassName: com.mysql.jdbc.Driver
+#    maxPoolSize: 5
+#    hibernate:
+#      dialect: org.hibernate.dialect.MySQLDialect
+#      show_sql: false
+#      format_sql: true
+#      hbm2ddl.auto: v
+#      current_session_context_class: thread
+#  statistic:
+#    url: jdbc:mysql://10.10.0.15:3306/bp_stat?useSSL=false&autoReconnect=true&useUnicode=true&characterEncoding=UTF-8
+#    username: bpstat
+#    password: Gdsh6eDgj9K
+#    driverClassName: com.mysql.jdbc.Driver
+#    maxPoolSize: 5
+#    hibernate:
+#      dialect: org.hibernate.dialect.MySQLDialect
+#      show_sql: false
+#      format_sql: true
+#      hbm2ddl.auto: v
+#      current_session_context_class: thread
+#  landinger:
+#      url: jdbc:mysql://localhost:3306/landinger?useSSL=false&autoReconnect=true&useUnicode=true&characterEncoding=UTF-8
+#      username: root
+#      password: 1234
+#      driverClassName: com.mysql.jdbc.Driver
+#      maxPoolSize: 5
+#      hibernate:
+#        dialect: org.hibernate.dialect.MySQLDialect
+#        show_sql: false
+#        format_sql: true
+#        hbm2ddl.auto: v
+#        current_session_context_class: thread
+#  mongo:
+#    uri: mongodb://10.1.0.57:27017
+#    db: train
+#    username: crmini
+#    password: 7FskGj9kler21
+mess: hello
+#Spring
+spring:
+  mvc:
+    view:
+      prefix: /WEB-INF/view/
+      suffix: .jsp
+    favicon:
+      enabled: false
+  thymeleaf:
+    cache: false
+    suffix: .jsp
+
+#Spring boot actuator
+endpoints:
+  enabled: false
+  health:
+    enabled: true
+    sensitive: false
+server:
+  error:
+    whitelabel:
+      enabled: false
+
+#Flyway
+#flyway:
+#  baseline-on-migrate: true
+#  url: jdbc:mysql://localhost:3306/landinger?useSSL=false&autoReconnect=true&useUnicode=true&characterEncoding=UTF-8
+#  user: root
+#  password: 1234
