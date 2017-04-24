@@ -41,15 +41,8 @@
 #    db: train
 #    username: crmini
 #    password: 7FskGj9kler21
-mess: hello
 #Spring
 spring:
-  mvc:
-    view:
-      prefix: /WEB-INF/view/
-      suffix: .jsp
-    favicon:
-      enabled: false
   thymeleaf:
     cache: false
     suffix: .jsp
