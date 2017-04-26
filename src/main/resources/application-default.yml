@@ -1,17 +1,21 @@
 #Hibernate Hikari Connection Pool
-#datasource:
-#  dictionary:
-#    url: jdbc:mysql://localhost:3306/ndictionary?useSSL=false&autoReconnect=true&useUnicode=true&characterEncoding=UTF-8
-#    username: root
-#    password: 1234
-#    driverClassName: com.mysql.jdbc.Driver
-#    maxPoolSize: 5
-#    hibernate:
-#      dialect: org.hibernate.dialect.MySQLDialect
-#      show_sql: false
-#      format_sql: true
-#      hbm2ddl.auto: v
-#      current_session_context_class: thread
+datasource:
+  app:
+    url: postgres://wdnkrrnxasisja:a1cb6932c52d5390bd766b558628ad00ba1bd32fc11359b71e7c8f54fbacb1e1@ec2-54-163-252-55.compute-1.amazonaws.com:5432/db7glbnf97bu4f
+    driverClassName: org.postgresql.Driver
+    maxActive: 10
+    maxIdle: 5
+    minIdle: 2
+    initialSize: 5
+    removeAbandoned: true
+    driverClassName: com.mysql.jdbc.Driver
+    maxPoolSize: 5
+    hibernate:
+      dialect: org.hibernate.dialect.MySQLDialect
+      show_sql: rtue
+      format_sql: true
+      hbm2ddl.auto: v
+      current_session_context_class: thread
 #  statistic:
 #    url: jdbc:mysql://10.10.0.15:3306/bp_stat?useSSL=false&autoReconnect=true&useUnicode=true&characterEncoding=UTF-8
 #    username: bpstat
@@ -46,6 +50,14 @@ spring:
   thymeleaf:
     cache: false
     suffix: .jsp
+  datasource:
+    url: postgres://wdnkrrnxasisja:a1cb6932c52d5390bd766b558628ad00ba1bd32fc11359b71e7c8f54fbacb1e1@ec2-54-163-252-55.compute-1.amazonaws.com:5432/db7glbnf97bu4f
+    driverClassName: org.postgresql.Driver
+    maxActive: 10
+    maxIdle: 5
+    minIdle: 2
+    initialSize: 5
+    removeAbandoned: true
 
 #Spring boot actuator
 endpoints:
@@ -59,8 +71,8 @@ server:
       enabled: false
 
 #Flyway
-#flyway:
-#  baseline-on-migrate: true
-#  url: jdbc:mysql://localhost:3306/landinger?useSSL=false&autoReconnect=true&useUnicode=true&characterEncoding=UTF-8
+flyway:
+  baseline-on-migrate: true
+  url: postgres://wdnkrrnxasisja:a1cb6932c52d5390bd766b558628ad00ba1bd32fc11359b71e7c8f54fbacb1e1@ec2-54-163-252-55.compute-1.amazonaws.com:5432/db7glbnf97bu4f
 #  user: root
 #  password: 1234
