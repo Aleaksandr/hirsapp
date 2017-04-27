@@ -33,14 +33,13 @@ public class AppRepositoryConfig {
     private Environment environment;
     @Value("${datasource.app.maxPoolSize}")
     private int maxPoolSize;
-    @Value("${JDBC_DATABASE_USERNAME}")
-    private int username;
+//    @Value("${JDBC_DATABASE_USERNAME}")
+//    private int username;
 
     @Bean
     @Primary
     @ConfigurationProperties(prefix = "datasource.app")
     public DataSource appDataSource() {
-        System.out.println("Username: " + username);
         return DataSourceBuilder.create().build();
     }
     /*@Bean
