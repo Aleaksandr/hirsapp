@@ -1,7 +1,10 @@
 package com.hirs.controller;
 
+import com.hirs.model.app.AdminKeyType;
+import com.hirs.service.AdministrationService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CookieValue;
@@ -12,6 +15,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class HelloController {
+
+    @Autowired
+    AdministrationService administrationService;
 
     private final static String NO_COOKIE = "no_value";
     private static final Logger LOGGER = LoggerFactory.getLogger(HelloController.class);
@@ -27,7 +33,10 @@ public class HelloController {
 
     @RequestMapping(value = { "/hello", "/" }, method = RequestMethod.GET)
     public String indexPage(Model model, @CookieValue( value = "remember-me", defaultValue = NO_COOKIE) String rememberMe) {
-//        model.addAttribute("loginName", SecurityContextHolder.getContext().getAuthentication().getName());
+        LOGGER.info("save...");
+        administrationService.update(AdminKeyType.TRAINS_HASH, "testHesh");
+        LOGGER.info("Get: " + String.valueOf(administrationService.findByAdminKeyType(AdminKeyType.TRAINS_HASH)));
+        model.addAttribute("name", String.valueOf(administrationService.findByAdminKeyType(AdminKeyType.TRAINS_HASH)));
         return "hello";
     }
 }
