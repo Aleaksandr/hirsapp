@@ -31,8 +31,8 @@ public class AppRepositoryConfig {
 
     @Autowired
     private Environment environment;
-    @Value("${datasource.app.maxPoolSize}")
-    private int maxPoolSize;
+//    @Value("${datasource.app.maxPoolSize}")
+//    private int maxPoolSize;
 //    @Value("${JDBC_DATABASE_USERNAME}")
 //    private int username;
 
