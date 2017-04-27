@@ -50,14 +50,14 @@ spring:
   thymeleaf:
     cache: false
     suffix: .jsp
-  datasource:
-    url: postgres://wdnkrrnxasisja:a1cb6932c52d5390bd766b558628ad00ba1bd32fc11359b71e7c8f54fbacb1e1@ec2-54-163-252-55.compute-1.amazonaws.com:5432/db7glbnf97bu4f
-    driverClassName: org.postgresql.Driver
-    maxActive: 10
-    maxIdle: 5
-    minIdle: 2
-    initialSize: 5
-    removeAbandoned: true
+#  datasource:
+#    url: postgres://wdnkrrnxasisja:a1cb6932c52d5390bd766b558628ad00ba1bd32fc11359b71e7c8f54fbacb1e1@ec2-54-163-252-55.compute-1.amazonaws.com:5432/db7glbnf97bu4f
+#    driverClassName: org.postgresql.Driver
+#    maxActive: 10
+#    maxIdle: 5
+#    minIdle: 2
+#    initialSize: 5
+#    removeAbandoned: true
 
 #Spring boot actuator
 endpoints:
