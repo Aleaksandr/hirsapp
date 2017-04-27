@@ -31,24 +31,24 @@ public class AppRepositoryConfig {
 
     @Autowired
     private Environment environment;
-//    @Value("${datasource.app.maxPoolSize}")
-//    private int maxPoolSize;
+    @Value("${datasource.app.maxPoolSize}")
+    private int maxPoolSize;
 //    @Value("${JDBC_DATABASE_USERNAME}")
 //    private int username;
 
+//    @Bean
+//    @Primary
+//    @ConfigurationProperties(prefix = "datasource.app")
+//    public DataSource appDataSource() {
+//        return DataSourceBuilder.create().build();
+//    }
     @Bean
-    @Primary
-    @ConfigurationProperties(prefix = "datasource.app")
-    public DataSource appDataSource() {
-        return DataSourceBuilder.create().build();
-    }
-    /*@Bean
     @ConfigurationProperties(prefix = "datasource.app")
     public DataSourceProperties appDataSourceProperties(){
         return new DataSourceProperties();
-    }*/
+    }
 
-    /*@Bean(name = "appDataSource")
+    @Bean(name = "appDataSource")
     public DataSource appDataSource() {
         DataSourceProperties dataSourceProperties = appDataSourceProperties();
         HikariDataSource dataSource = (HikariDataSource) DataSourceBuilder
@@ -65,7 +65,7 @@ public class AppRepositoryConfig {
         dataSource.addDataSourceProperty("prepStmtCacheSqlLimit", 2048);
         dataSource.addDataSourceProperty("useServerPrepStmts", true);
         return dataSource;
-    }*/
+    }
 
     @Bean(name = "appEntityManagerFactory")
     public LocalContainerEntityManagerFactoryBean appEntityManagerFactory() {
