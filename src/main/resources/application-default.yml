@@ -72,6 +72,6 @@ server:
 #Flyway
 flyway:
   baseline-on-migrate: true
-  url: postgres://wdnkrrnxasisja:a1cb6932c52d5390bd766b558628ad00ba1bd32fc11359b71e7c8f54fbacb1e1@ec2-54-163-252-55.compute-1.amazonaws.com:5432/db7glbnf97bu4f
+  url: jdbc:postgresql://wdnkrrnxasisja:a1cb6932c52d5390bd766b558628ad00ba1bd32fc11359b71e7c8f54fbacb1e1@ec2-54-163-252-55.compute-1.amazonaws.com:5432/db7glbnf97bu4f
   user: wdnkrrnxasisja
   password: a1cb6932c52d5390bd766b558628ad00ba1bd32fc11359b71e7c8f54fbacb1e1
