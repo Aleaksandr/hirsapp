@@ -35,7 +35,7 @@ public class HelloController {
     public String indexPage(Model model, @CookieValue( value = "remember-me", defaultValue = NO_COOKIE) String rememberMe) {
         LOGGER.info("save...");
         administrationService.update(AdminKeyType.TRAINS_HASH, "testHesh");
-        LOGGER.info("Get: " + String.valueOf(administrationService.findByAdminKeyType(AdminKeyType.TRAINS_HASH)));
+//        LOGGER.info("Get: " + String.valueOf(administrationService.findByAdminKeyType(AdminKeyType.TRAINS_HASH)));
         model.addAttribute("name", String.valueOf(administrationService.findByAdminKeyType(AdminKeyType.TRAINS_HASH)));
         return "hello";
     }
