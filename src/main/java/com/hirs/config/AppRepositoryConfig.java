@@ -40,7 +40,7 @@ public class AppRepositoryConfig {
     private Environment environment;
     @Value("${datasource.app.maxPoolSize}")
     private int maxPoolSize;
-    @Value("${JDBC_DATABASE_USERNAME}")
+    @Value("${DATABASE_URL}")
     private String jdbc_url;
     @Value("${CLEARDB_DATABASE_URL}")
     private String clearDB_url;
