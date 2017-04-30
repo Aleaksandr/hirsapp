@@ -1,6 +1,9 @@
 package com.hirs.config;
 
+import com.hirs.controller.HelloController;
 import com.zaxxer.hikari.HikariDataSource;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
@@ -20,6 +23,8 @@ import org.springframework.transaction.PlatformTransactionManager;
 
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.Properties;
 
 @Configuration
@@ -29,19 +34,17 @@ import java.util.Properties;
         transactionManagerRef = "appTransactionManager")
 public class AppRepositoryConfig {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(AppRepositoryConfig.class);
+
     @Autowired
     private Environment environment;
     @Value("${datasource.app.maxPoolSize}")
     private int maxPoolSize;
-//    @Value("${JDBC_DATABASE_USERNAME}")
-//    private int username;
+    @Value("${JDBC_DATABASE_USERNAME}")
+    private String jdbc_url;
+    @Value("${CLEARDB_DATABASE_URL}")
+    private String clearDB_url;
 
-//    @Bean
-//    @Primary
-//    @ConfigurationProperties(prefix = "datasource.app")
-//    public DataSource appDataSource() {
-//        return DataSourceBuilder.create().build();
-//    }
     @Bean
     @ConfigurationProperties(prefix = "datasource.app")
     public DataSourceProperties appDataSourceProperties(){
@@ -49,14 +52,23 @@ public class AppRepositoryConfig {
     }
 
     @Bean(name = "appDataSource")
-    public DataSource appDataSource() {
+    public DataSource appDataSource() throws URISyntaxException {
+        URI dbUri = new URI(System.getenv("CLEARDB_DATABASE_URL"));
+
+        String username = dbUri.getUserInfo().split(":")[0];
+        String password = dbUri.getUserInfo().split(":")[1];
+        String dbUrl = "jdbc:mysql://" + dbUri.getHost() + dbUri.getPath();
+
+        LOGGER.info("DB_URL: "+jdbc_url);
+        LOGGER.info("CLEAR_DB_URL: "+clearDB_url);
+
         DataSourceProperties dataSourceProperties = appDataSourceProperties();
         HikariDataSource dataSource = (HikariDataSource) DataSourceBuilder
                 .create(dataSourceProperties.getClassLoader())
                 .driverClassName(dataSourceProperties.getDriverClassName())
-                .url(dataSourceProperties.getUrl())
-                .username(dataSourceProperties.getUsername())
-                .password(dataSourceProperties.getPassword())
+                .url(dbUrl)
+                .username(username)
+                .password(password)
                 .type(HikariDataSource.class)
                 .build();
         dataSource.setMaximumPoolSize(maxPoolSize);
@@ -68,7 +80,7 @@ public class AppRepositoryConfig {
     }
 
     @Bean(name = "appEntityManagerFactory")
-    public LocalContainerEntityManagerFactoryBean appEntityManagerFactory() {
+    public LocalContainerEntityManagerFactoryBean appEntityManagerFactory() throws URISyntaxException {
         LocalContainerEntityManagerFactoryBean factoryBean = new LocalContainerEntityManagerFactoryBean();
         factoryBean.setDataSource(appDataSource());
         factoryBean.setPackagesToScan("com.hirs.model.app");
@@ -95,7 +107,7 @@ public class AppRepositoryConfig {
     }
 
     @Bean(name = "appTransactionManager")
-    public PlatformTransactionManager appTransactionManager(@Qualifier("appEntityManagerFactory")EntityManagerFactory emf) {
+    public PlatformTransactionManager appTransactionManager(@Qualifier("appEntityManagerFactory")EntityManagerFactory emf) throws URISyntaxException {
         JpaTransactionManager txManager = new JpaTransactionManager();
         txManager.setEntityManagerFactory(emf);
         txManager.setDataSource(appDataSource());
