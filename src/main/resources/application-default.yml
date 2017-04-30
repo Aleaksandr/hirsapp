@@ -1,9 +1,6 @@
 #Hibernate Hikari Connection Pool
 datasource:
   app:
-#    url: jdbc:mysql://us-cdbr-iron-east-03.cleardb.net/heroku_43121117051449b?reconnect=true
-#    user: b22000f0ebfe91
-#    password: 2a4b3328
     driverClassName: com.mysql.jdbc.Driver
     maxPoolSize: 5
     hibernate:
@@ -12,48 +9,11 @@ datasource:
       format_sql: true
       hbm2ddl.auto: v
       current_session_context_class: thread
-#  statistic:
-#    url: jdbc:mysql://10.10.0.15:3306/bp_stat?useSSL=false&autoReconnect=true&useUnicode=true&characterEncoding=UTF-8
-#    username: bpstat
-#    password: Gdsh6eDgj9K
-#    driverClassName: com.mysql.jdbc.Driver
-#    maxPoolSize: 5
-#    hibernate:
-#      dialect: org.hibernate.dialect.MySQLDialect
-#      show_sql: false
-#      format_sql: true
-#      hbm2ddl.auto: v
-#      current_session_context_class: thread
-#  landinger:
-#      url: jdbc:mysql://localhost:3306/landinger?useSSL=false&autoReconnect=true&useUnicode=true&characterEncoding=UTF-8
-#      username: root
-#      password: 1234
-#      driverClassName: com.mysql.jdbc.Driver
-#      maxPoolSize: 5
-#      hibernate:
-#        dialect: org.hibernate.dialect.MySQLDialect
-#        show_sql: false
-#        format_sql: true
-#        hbm2ddl.auto: v
-#        current_session_context_class: thread
-#  mongo:
-#    uri: mongodb://10.1.0.57:27017
-#    db: train
-#    username: crmini
-#    password: 7FskGj9kler21
 #Spring
 spring:
   thymeleaf:
     cache: false
     suffix: .jsp
-#  datasource:
-#    url: postgres://wdnkrrnxasisja:a1cb6932c52d5390bd766b558628ad00ba1bd32fc11359b71e7c8f54fbacb1e1@ec2-54-163-252-55.compute-1.amazonaws.com:5432/db7glbnf97bu4f
-#    driverClassName: org.postgresql.Driver
-#    maxActive: 10
-#    maxIdle: 5
-#    minIdle: 2
-#    initialSize: 5
-#    removeAbandoned: true
 
 #Spring boot actuator
 endpoints:

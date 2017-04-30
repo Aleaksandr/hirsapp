@@ -2,6 +2,7 @@ package com.hirs.config;
 
 import com.hirs.controller.HelloController;
 import com.zaxxer.hikari.HikariDataSource;
+import org.flywaydb.core.Flyway;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import org.springframework.boot.autoconfigure.jdbc.DataSourceProperties;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.DependsOn;
 import org.springframework.context.annotation.Primary;
 import org.springframework.core.env.Environment;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
@@ -40,10 +42,6 @@ public class AppRepositoryConfig {
     private Environment environment;
     @Value("${datasource.app.maxPoolSize}")
     private int maxPoolSize;
-    @Value("${DATABASE_URL}")
-    private String jdbc_url;
-    @Value("${CLEARDB_DATABASE_URL}")
-    private String clearDB_url;
 
     @Bean
     @ConfigurationProperties(prefix = "datasource.app")
@@ -53,15 +51,10 @@ public class AppRepositoryConfig {
 
     @Bean(name = "appDataSource")
     public DataSource appDataSource() throws URISyntaxException {
-        URI dbUri = new URI(System.getenv("CLEARDB_DATABASE_URL"));
-
+        URI dbUri = new URI(System.getenv("APP_DATABASE_URL"));
         String username = dbUri.getUserInfo().split(":")[0];
         String password = dbUri.getUserInfo().split(":")[1];
         String dbUrl = "jdbc:mysql://" + dbUri.getHost() + dbUri.getPath();
-
-        LOGGER.info("DB_URL: "+jdbc_url);
-        LOGGER.info("CLEAR_DB_URL: "+clearDB_url);
-
         DataSourceProperties dataSourceProperties = appDataSourceProperties();
         HikariDataSource dataSource = (HikariDataSource) DataSourceBuilder
                 .create(dataSourceProperties.getClassLoader())
@@ -113,4 +106,19 @@ public class AppRepositoryConfig {
         txManager.setDataSource(appDataSource());
         return txManager;
     }
+
+    @Bean(initMethod = "migrate")
+    Flyway flyway() throws URISyntaxException {
+        Flyway flyway = new Flyway();
+        flyway.setBaselineOnMigrate(true);
+        flyway.setDataSource(appDataSource());
+        return flyway;
+    }
+
+    /*@Bean @DependsOn("flyway")
+    EntityManagerFactory entityManagerFactory() throws URISyntaxException {
+        LocalContainerEntityManagerFactoryBean bean = new LocalContainerEntityManagerFactoryBean();
+        bean.setDataSource(appDataSource());
+        return bean.getObject();
+    }*/
 }

@@ -22,21 +22,21 @@ public class HelloController {
     private final static String NO_COOKIE = "no_value";
     private static final Logger LOGGER = LoggerFactory.getLogger(HelloController.class);
 
-    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    /*@RequestMapping(value = "/login", method = RequestMethod.GET)
     public String loginPage(@RequestParam(value = "error", required = false) String error,
                             @RequestParam(value = "logout", required = false) String logout,
                             Model model) {
         if (error != null) model.addAttribute("error", "Invalid username or password!");
         if (logout != null) model.addAttribute("message", "You've been logged out successfully.");
         return "login";
-    }
+    }*/
 
     @RequestMapping(value = { "/hello", "/" }, method = RequestMethod.GET)
     public String indexPage(Model model, @CookieValue( value = "remember-me", defaultValue = NO_COOKIE) String rememberMe) {
         LOGGER.info("save...");
         administrationService.update(AdminKeyType.TRAINS_HASH, "testHesh");
         LOGGER.info("Get: " + String.valueOf(administrationService.findByAdminKeyType(AdminKeyType.TRAINS_HASH)));
-        model.addAttribute("name", String.valueOf(administrationService.findByAdminKeyType(AdminKeyType.TRAINS_HASH)));
+        model.addAttribute("name", administrationService.findByAdminKeyType(AdminKeyType.TRAINS_HASH).getValue());
         return "hello";
     }
 }
