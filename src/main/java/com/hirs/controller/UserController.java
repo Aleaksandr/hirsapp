@@ -4,6 +4,8 @@ import com.hirs.model.app.User;
 import com.hirs.service.SecurityService;
 import com.hirs.service.UserService;
 import com.hirs.service.impl.UserValidator;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,6 +24,8 @@ public class UserController {
 
     @Autowired
     private UserValidator userValidator;
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(UserController.class);
 
     @RequestMapping(value = "/registration", method = RequestMethod.GET)
     public String registration(Model model) {
@@ -58,6 +62,7 @@ public class UserController {
 
     @RequestMapping(value = {"/home", "/"}, method = RequestMethod.GET)
     public String homePage(Model model) {
+        LOGGER.info("home_page");
         return "home";
     }
 }
