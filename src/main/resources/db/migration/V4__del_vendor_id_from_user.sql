@@ -1,0 +1,2 @@
+ALTER TABLE `user`
+  DROP COLUMN `VENDOR_ID`;

@@ -12,22 +12,21 @@ public class User implements Serializable {
     @GeneratedValue
     @Column(name = "ID")
     private Integer id;
-    @Column(name = "LOGIN", length = 95)
-    private String login;
+    @Column(name = "USER_NAME", length = 95)
+    private String username;
     @Column(name = "PASSWORD", length = 95)
     private String password;
+    @Column(name = "PASSWORD_CONFIRM", length = 95)
+    private String passwordConfirm;;
     @Column(name = "TYPE", length = 45)
     @Enumerated(EnumType.STRING)
     private UserType type;
-    @Column(name = "VENDOR_ID", length = 45)
-    @Enumerated(EnumType.STRING)
-    private VendorId vendorId;
 
-    public User(String login, String password, UserType type, VendorId vendorId) {
-        this.login = login;
+    public User(String username, String password, String passwordConfirm, UserType type) {
+        this.username = username;
         this.password = password;
+        this.passwordConfirm = passwordConfirm;
         this.type = type;
-        this.vendorId = vendorId;
     }
 
     public User() {
@@ -41,12 +40,12 @@ public class User implements Serializable {
         this.id = id;
     }
 
-    public String getLogin() {
-        return login;
+    public String getUsername() {
+        return username;
     }
 
-    public void setLogin(String login) {
-        this.login = login;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {
@@ -65,11 +64,11 @@ public class User implements Serializable {
         this.type = type;
     }
 
-    public VendorId getVendorId() {
-        return vendorId;
+    public String getPasswordConfirm() {
+        return passwordConfirm;
     }
 
-    public void setVendorId(VendorId vendorId) {
-        this.vendorId = vendorId;
+    public void setPasswordConfirm(String passwordConfirm) {
+        this.passwordConfirm = passwordConfirm;
     }
 }

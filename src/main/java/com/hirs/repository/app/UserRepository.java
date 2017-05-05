@@ -8,7 +8,5 @@ import org.springframework.data.jpa.repository.Query;
 import java.util.List;
 
 public interface UserRepository extends JpaRepository<User, Integer> {
-    User getUserByLogin(String login);
-    @Query("select distinct user.vendorId from User user")
-    List<VendorId> getRegisteredVendorIds();
+    User getUserByUsername(String username);
 }
