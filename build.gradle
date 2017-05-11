@@ -1,6 +1,7 @@
 buildscript {
 	ext {
 		springBootVersion = '1.5.3.RELEASE'
+		tomcatVersion = '8.5.14'
 	}
 	repositories {
 		mavenLocal()
@@ -39,8 +40,13 @@ dependencies {
 	runtime('mysql:mysql-connector-java')
 	compile('org.flywaydb:flyway-core:4.0.3')
 	compile('com.zaxxer:HikariCP:2.5.1')
-	compile('org.apache.tomcat.embed:tomcat-embed-jasper')
-	compile('jstl:jstl:1.2')
+	compile("org.apache.tomcat.embed:tomcat-embed-core:${tomcatVersion}")
+	compile("org.apache.tomcat.embed:tomcat-embed-logging-juli:${tomcatVersion}")
+	compile("org.apache.tomcat.embed:tomcat-embed-jasper:${tomcatVersion}")
+	compile("org.apache.tomcat:tomcat-jasper:${tomcatVersion}")
+	compile("org.apache.tomcat:tomcat-jsp-api:${tomcatVersion}")
+	compile("org.apache.tomcat:tomcat-jasper-el:${tomcatVersion}")
+	compile("jstl:jstl:1.2")
 
 	testCompile("junit:junit")
 }
