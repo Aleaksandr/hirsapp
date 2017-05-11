@@ -1,7 +1,7 @@
 buildscript {
 	ext {
 		springBootVersion = '1.5.3.RELEASE'
-		tomcatVersion = '8.5.14'
+		tomcatVersion = '8.5.2'
 	}
 	repositories {
 		mavenLocal()
