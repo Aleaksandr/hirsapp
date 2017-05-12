@@ -13,7 +13,7 @@ datasource:
 spring:
   mvc:
     view:
-      prefix: static/views/
+      prefix: /WEB-INF/jsp/
       suffix: .jsp
 
 #Spring boot actuator

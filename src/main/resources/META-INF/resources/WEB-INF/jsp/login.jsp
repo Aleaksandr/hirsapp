@@ -13,8 +13,8 @@
 
     <title>Log in with your account</title>
 
-    <link href="<spring:url value="/static/css/bootstrap.min.css" htmlEscape="true"/>" rel="stylesheet">
-    <link href="<spring:url value="/static/css/common.css" htmlEscape="true"/>" rel="stylesheet">
+    <link href="<spring:url value="/css/bootstrap.min.css" htmlEscape="true"/>" rel="stylesheet">
+    <link href="<spring:url value="/css/common.css" htmlEscape="true"/>" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -49,7 +49,7 @@
 
     </div>
     <!-- /container -->
-    <script src="<spring:url value="/static/js/bootstrap.min.js" htmlEscape="true"/>"></script>
-    <script src="<spring:url value="/static/js/jquery/1.11.2/jquery.min.js" htmlEscape="true"/>"></script>
+    <script src="<spring:url value="/js/bootstrap.min.js" htmlEscape="true"/>"></script>
+    <script src="<spring:url value="/js/jquery/1.11.2/jquery.min.js" htmlEscape="true"/>"></script>
     </body>
 </html>

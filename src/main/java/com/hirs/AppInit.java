@@ -16,11 +16,6 @@ import org.springframework.boot.web.support.SpringBootServletInitializer;
                 JpaRepositoriesAutoConfiguration.class})
 public class AppInit extends SpringBootServletInitializer {
 
-    @Override
-    protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-        return application.sources(AppInit.class);
-    }
-
     public static void main(String[] args) {
         SpringApplication.run(AppInit.class, args);
     }
