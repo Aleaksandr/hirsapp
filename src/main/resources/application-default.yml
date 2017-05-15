@@ -11,10 +11,8 @@ datasource:
       current_session_context_class: thread
 #Spring
 spring:
-  mvc:
-    view:
-      prefix: /WEB-INF/jsp/
-      suffix: .jsp
+  thymeleaf:
+    cache: false
 
 #Spring boot actuator
 endpoints:

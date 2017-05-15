@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import java.util.Map;
+
 @Controller
 public class UserController {
     @Autowired
@@ -27,23 +29,23 @@ public class UserController {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(UserController.class);
 
-    @RequestMapping(value = "/registration", method = RequestMethod.GET)
-    public String registration(Model model) {
-        model.addAttribute("userForm", new User());
-        return "registration";
-    }
-
-    @RequestMapping(value = "/registration", method = RequestMethod.POST)
-    public String registration(@ModelAttribute("userForm") User userForm, BindingResult bindingResult, Model model) {
-        userValidator.validate(userForm, bindingResult);
-        if (bindingResult.hasErrors()) {
-            return "registration";
-        }
-        userService.save(userForm);
-        securityService.autologin(userForm.getUsername(), userForm.getPasswordConfirm());
-        return "redirect:/main";
-    }
-
+//    @RequestMapping(value = "/registration", method = RequestMethod.GET)
+//    public String registration(Model model) {
+//        model.addAttribute("userForm", new User());
+//        return "registration";
+//    }
+//
+//    @RequestMapping(value = "/registration", method = RequestMethod.POST)
+//    public String registration(@ModelAttribute("userForm") User userForm, BindingResult bindingResult, Model model) {
+//        userValidator.validate(userForm, bindingResult);
+//        if (bindingResult.hasErrors()) {
+//            return "registration";
+//        }
+//        userService.save(userForm);
+//        securityService.autologin(userForm.getUsername(), userForm.getPasswordConfirm());
+//        return "redirect:/main";
+//    }
+//
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String login(Model model, String error, String logout) {
         if (error != null)
@@ -54,13 +56,20 @@ public class UserController {
 
         return "login";
     }
+//
+//    @RequestMapping(value = {"/main"}, method = RequestMethod.GET)
+//    public String mainPage(Model model) {
+//        return "main";
+//    }
 
-    @RequestMapping(value = {"/main"}, method = RequestMethod.GET)
-    public String mainPage(Model model) {
-        return "main";
+
+    @RequestMapping(value = {"/"})
+    public String welcome(Map<String, Object> model) {
+        model.put("message", "HELOO!!!");
+        return "welcome";
     }
 
-    @RequestMapping(value = {"/home", "/"}, method = RequestMethod.GET)
+    @RequestMapping(value = {"/home"}, method = RequestMethod.GET)
     public String homePage(Model model) {
         LOGGER.info("home_page");
         return "home";
