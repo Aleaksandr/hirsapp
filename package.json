@@ -1,0 +1,47 @@
+{
+  "name": "hirsapp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Aleaksandr/hirsapp.git"
+  },
+  "author": "aleksandr.hirs",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Aleaksandr/hirsapp/issues"
+  },
+  "homepage": "https://github.com/Aleaksandr/hirsapp#readme",
+  "devDependencies": {
+    "babel-core": "^6.24.1",
+    "babel-loader": "^7.0.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "babel-preset-stage-1": "^6.24.1",
+    "classnames": "^2.2.5",
+    "css-loader": "^0.28.1",
+    "es6-promise": "^4.1.0",
+    "extract-text-webpack-plugin": "^2.1.0",
+    "flux": "^3.1.2",
+    "flux-constant": "^1.1.4",
+    "google-map-react": "^0.24.0",
+    "isomorphic-fetch": "^2.2.1",
+    "keymirror": "^0.1.1",
+    "node-sass": "^4.5.3",
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4",
+    "react-icons": "^2.2.5",
+    "react-pure-render": "^1.0.2",
+    "react-select": "^1.0.0-rc.4",
+    "sass-loader": "^6.0.5",
+    "style-loader": "^0.17.0",
+    "svg-url-loader": "^2.0.2",
+    "url-loader": "^0.5.8",
+    "webpack": "^2.5.1"
+  }
+}

@@ -56,22 +56,10 @@ public class UserController {
 
         return "login";
     }
-//
-//    @RequestMapping(value = {"/main"}, method = RequestMethod.GET)
-//    public String mainPage(Model model) {
-//        return "main";
-//    }
 
-
-    @RequestMapping(value = {"/"})
-    public String welcome(Map<String, Object> model) {
-        model.put("message", "HELOO!!!");
-        return "welcome";
-    }
-
-    @RequestMapping(value = {"/home"}, method = RequestMethod.GET)
+    @RequestMapping(value = {"/main", "/"}, method = RequestMethod.GET)
     public String homePage(Model model) {
-        LOGGER.info("home_page");
-        return "home";
+        LOGGER.info("main_page");
+        return "main";
     }
 }

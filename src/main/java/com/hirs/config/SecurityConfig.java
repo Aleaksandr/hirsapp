@@ -54,10 +54,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("/static/**",
-                        "/home",
+                .antMatchers("/main",
                         "/registration",
                         "/",
+                        "/error/**",
                         "/css/**",
                         "/img/**",
                         "/js/**",
@@ -67,7 +67,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .formLogin()
                 .loginPage("/login")
                 .permitAll().successHandler(savedRequestAwareAuthenticationSuccessHandler())
-                .defaultSuccessUrl("/main")
+                .defaultSuccessUrl("/welcome")
                 .failureUrl("/login?error")
                 .loginPage("/login")
                 .permitAll()
