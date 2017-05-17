@@ -1,5 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
+import PropTypes from 'prop-types';
 
 export default class NavItem extends React.Component {
     constructor(props) {
@@ -11,10 +12,10 @@ export default class NavItem extends React.Component {
     };
 
     static propTypes = {
-        itemText: React.PropTypes.any,
-        active: React.PropTypes.bool,
-        navItemKey: React.PropTypes.any,
-        onItemClick: React.PropTypes.func
+        itemText: PropTypes.any,
+        active: PropTypes.bool,
+        navItemKey: PropTypes.any,
+        onItemClick: PropTypes.func
     };
 
     handleClick = (event) => {

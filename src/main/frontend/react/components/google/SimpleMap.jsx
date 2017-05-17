@@ -1,5 +1,6 @@
-import React, {PropTypes, Component} from 'react';
+import React, {Component} from 'react';
 import shouldPureComponentUpdate from '../../../../../../node_modules/react-pure-render/function';
+import PropTypes from 'prop-types';
 
 import GoogleMap from 'google-map-react';
 import PlacePoint from '../../components/google/PlacePoint.jsx';

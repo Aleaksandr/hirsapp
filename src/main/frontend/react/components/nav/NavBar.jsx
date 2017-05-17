@@ -1,4 +1,5 @@
 import React, { cloneElement } from 'react';
+import PropTypes from 'prop-types';
 
 export default class NavBar extends React.Component {
     constructor(props) {
@@ -6,8 +7,8 @@ export default class NavBar extends React.Component {
     }
 
     static propTypes = {
-        activeNavItem: React.PropTypes.any.isRequired,
-        onSelect: React.PropTypes.func.isRequired
+        activeNavItem: PropTypes.any.isRequired,
+        onSelect: PropTypes.func.isRequired
     };
 
     getChildActiveProp = (child) => {

@@ -1,10 +1,11 @@
 import React from 'react';
 import Select from 'react-select';
+import PropTypes from 'prop-types';
 
 const AutocompleteStationName = React.createClass({
     displayName: 'AutocompleteStationName',
     propTypes: {
-        label: React.PropTypes.string,
+        label: PropTypes.string,
     },
     getInitialState () {
         return {
