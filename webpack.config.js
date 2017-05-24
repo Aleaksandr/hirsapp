@@ -52,10 +52,19 @@ const config = {
 
     if (process.env.NODE_ENV === 'production') {
         config.plugins.push(
+            new webpack.optimize.DedupePlugin(),
+            new webpack.optimize.OccurrenceOrderPlugin(),
             new webpack.optimize.UglifyJsPlugin({
-                minimize: true,
+                beautify: false,
+                comments: false,
                 compress: {
-                    warnings: false
+                    sequences     : true,
+                    booleans      : true,
+                    loops         : true,
+                    unused      : true,
+                    warnings    : false,
+                    drop_console: true,
+                    unsafe      : true
                 }
             })
         );
