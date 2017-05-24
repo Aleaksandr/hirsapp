@@ -34,6 +34,9 @@ export default class Main extends React.Component {
             case NavItemsConstants.TRAINS:
                 contentItem = <TrainNavBarBox />;
                 break;
+            default:
+                contentItem = <TrainNavBarBox />;
+                break;
         }
 
         return (
