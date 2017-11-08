@@ -55,6 +55,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .authorizeRequests()
                 .antMatchers("/main",
+                        "test",
                         "/registration",
                         "/",
                         "/error/**",
