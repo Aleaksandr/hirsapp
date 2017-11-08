@@ -33,7 +33,7 @@ export default class TrainNavBarBox extends React.Component {
                 contentItem = <TrainStationEditorBox />;
                 break;
             default:
-                contentItem = <TrainButtonBox />;
+                contentItem = <TrainStationEditorBox />;
                 isActive = true;
                 break;
         }
@@ -41,8 +41,8 @@ export default class TrainNavBarBox extends React.Component {
         return (
             <div className="container_trains">
                 <NavBar activeNavItem={this.state.activeNavItem} onSelect={this.handleNavSelect}>
-                    <NavItem active = {isActive} navItemKey={TrainNavItemConstants.TRAINS_BUTTON} itemText={'Buttons'} />
-                    <NavItem navItemKey={TrainNavItemConstants.TRAIN_STATION_EDITOR} itemText={'Train Station Editor'} />
+                    <NavItem active = {isActive} navItemKey={TrainNavItemConstants.TRAIN_STATION_EDITOR} itemText={'Train Station Editor'} />
+                    <NavItem navItemKey={TrainNavItemConstants.TRAINS_BUTTON} itemText={'Buttons'} />
                 </NavBar>
                 <div className="content_trains">
                     {contentItem}
